@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../context/AuthContext";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function RegisterPage() {
   const {
@@ -24,7 +25,7 @@ function RegisterPage() {
     <div className="max-w-lg mx-auto md:mt-20 mt-0 grid justify-items-center">
       {
         registerErros.map((error, i) => (
-          <div className="w-80 bg-red-500 p-3 text-white" key={i}>
+          <div className="w-80 bg-red-500 p-3 text-white my-2" key={i}>
             {error}
           </div>
         ))
@@ -61,6 +62,9 @@ function RegisterPage() {
         )}
         <button className= "shadow-md bg-blue-600 p-3 rounded-lg block w-full shadow-zinc-400 text-white font-bold mt-8 hover:bg-blue-800">Register</button>
       </form>
+      <p className="text-white">
+        Already have an account? <Link to="/login">Log In</Link>
+      </p>
     </div>
   );
 }
