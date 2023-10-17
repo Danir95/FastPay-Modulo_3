@@ -9,7 +9,7 @@ export const register = async (req, res) => {
 
         const userFound = await User.findOne({email});
         if(userFound){
-            return res.status(400).json({message: ['Email already exists']})        }
+            return res.status(400).json(['Email already exists'])}
 
         const password_hash = await bcryptjs.hash(password, 10)  //encriptamos la contraseña
 
@@ -24,7 +24,7 @@ export const register = async (req, res) => {
         //creamos el token con jwt
         const token = await createAccessToken({id: userSaved.id})
         //creamos una cookie con el token
-        res.cookie('token', token)
+        res.cookie("token", token)
         //Mostramos solo los datos requeridos por el front, sin el password
         res.json({
             id: userSaved.id,
